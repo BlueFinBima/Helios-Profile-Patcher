@@ -45,7 +45,10 @@ jobs:
         continue-on-error: true
         shell: cmd
         run: |
+          echo building HeliosProfilePatcher Release|x64
           msbuild HeliosProfilePatcher.sln /p:Configuration=Release /p:Platform="x64"
+          echo building 64-bit installers
+          devenv Helios.sln /Build "JustInstaller|x64"
 
       - name: zip up the msi
         continue-on-error: true
