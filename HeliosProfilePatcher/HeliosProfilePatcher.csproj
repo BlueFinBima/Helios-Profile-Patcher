@@ -8,6 +8,7 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>HeliosProfilePatcher1.ico</ApplicationIcon>
     <Platforms>AnyCPU;x64</Platforms>
+    <Configurations>Debug;Release;JustInstaller</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

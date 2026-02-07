@@ -27,12 +27,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5B2805A388BF423AB518C6E23F1DC000"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_7698FC9822D142AF962585FA9EFEBC47"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -61,6 +55,46 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
+        }
+        "JustInstaller"
+        {
+        "DisplayName" = "8:JustInstaller"
+        "IsDebugOnly" = "11:FALSE"
+        "IsReleaseOnly" = "11:FALSE"
+        "OutputFilename" = "8:JustInstaller\\Installer.msi"
+        "PackageFilesAs" = "3:2"
+        "PackageFileSize" = "3:-2147483648"
+        "CabType" = "3:1"
+        "Compression" = "3:2"
+        "SignOutput" = "11:FALSE"
+        "CertificateFile" = "8:"
+        "PrivateKeyFile" = "8:"
+        "TimeStampServer" = "8:"
+        "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -77,6 +111,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -278,7 +328,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Helios Profile Patcher"
         "ProductCode" = "8:{E6786C35-FB76-49CF-B5A1-53070214D7AE}"
-        "PackageCode" = "8:{D769D22B-E6D2-457F-9878-40AE5415205A}"
+        "PackageCode" = "8:{CE333072-0364-4672-B692-32375834E5B1}"
         "UpgradeCode" = "8:{4007497B-444E-4DEE-8A8F-0B6D499EFF61}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -406,7 +456,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_5B2805A388BF423AB518C6E23F1DC000"
+            "Target" = "8:"
             "Folder" = "8:_476002DB605B43D5BBF24B05373153C3"
             "WorkingFolder" = "8:_5BA35C73803642169450F33C94D85346"
             "Icon" = "8:_7698FC9822D142AF962585FA9EFEBC47"
@@ -816,9 +866,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_5B2805A388BF423AB518C6E23F1DC000"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E7C2067EBAE6479FB79012255CCD5BCC"
             {
-            "SourcePath" = "8:..\\HeliosProfilePatcher\\obj\\x64\\Release\\net8.0-windows\\apphost.exe"
+            "SourcePath" = "8:"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_5BA35C73803642169450F33C94D85346"
@@ -836,7 +886,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
+            "OutputConfiguration" = "8:Release|x64"
             "OutputGroupCanonicalName" = "8:PublishItems"
             "OutputProjectGuid" = "8:{19E32630-23B3-4F5F-AA5D-5496168EE545}"
             "ShowKeyOutput" = "11:TRUE"
