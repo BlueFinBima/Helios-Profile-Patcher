@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36109.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeliosProfilePatcher", "HeliosProfilePatcher.csproj", "{19E32630-23B3-4F5F-AA5D-5496168EE545}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "..\Installer\Installer.vdproj", "{B3724FF1-63B2-8EB6-790C-41E05982363C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19E32630-23B3-4F5F-AA5D-5496168EE545}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19E32630-23B3-4F5F-AA5D-5496168EE545}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19E32630-23B3-4F5F-AA5D-5496168EE545}.Debug|x64.ActiveCfg = Debug|x64
+		{19E32630-23B3-4F5F-AA5D-5496168EE545}.Debug|x64.Build.0 = Debug|x64
+		{19E32630-23B3-4F5F-AA5D-5496168EE545}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19E32630-23B3-4F5F-AA5D-5496168EE545}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19E32630-23B3-4F5F-AA5D-5496168EE545}.Release|x64.ActiveCfg = Release|x64
+		{19E32630-23B3-4F5F-AA5D-5496168EE545}.Release|x64.Build.0 = Release|x64
+		{B3724FF1-63B2-8EB6-790C-41E05982363C}.Debug|Any CPU.ActiveCfg = Debug
+		{B3724FF1-63B2-8EB6-790C-41E05982363C}.Debug|x64.ActiveCfg = Debug
+		{B3724FF1-63B2-8EB6-790C-41E05982363C}.Release|Any CPU.ActiveCfg = Release
+		{B3724FF1-63B2-8EB6-790C-41E05982363C}.Release|x64.ActiveCfg = Release
+		{B3724FF1-63B2-8EB6-790C-41E05982363C}.Release|x64.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9860883C-4D91-49C4-B052-F4CD618C4B4F}
+	EndGlobalSection
+EndGlobal

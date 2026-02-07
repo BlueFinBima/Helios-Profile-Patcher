@@ -1,0 +1,56 @@
+﻿<Window x:Class="HeliosProfilePatcher.PreviewWindow"
+        xmlns:local="clr-namespace:HeliosProfilePatcher"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+Title="Patch Preview" Height="500" Width="700"
+WindowStartupLocation="CenterOwner">
+
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+
+        <TabControl>
+            <TabItem Header="Interfaces">
+                <ScrollViewer>
+                    <ItemsControl ItemsSource="{Binding Interfaces}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsSelected}">
+                                    <TextBlock Text="{Binding Name}" />
+                                </CheckBox>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </TabItem>
+
+
+            <TabItem Header="Bindings">
+                <ScrollViewer>
+                    <ItemsControl ItemsSource="{Binding Bindings}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsSelected}">
+                                    <TextBox Text="{Binding Xml}"
+                                    AcceptsReturn="True"
+                                    TextWrapping="Wrap"
+                                    MinHeight="60" />
+                                </CheckBox>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Content="Patch" Width="100" Margin="0,0,10,0" Click="Patch_Click" />
+            <Button Content="Cancel" Width="100" Click="Cancel_Click" />
+        </StackPanel>
+    </Grid>
+</Window>
