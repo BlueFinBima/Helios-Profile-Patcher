@@ -15,6 +15,18 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_19A852A2A4424354B559BEDE8F538444"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1B75904F071E4C89AAC849FCB648F348"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_40C11C6AC2E44B23BDBE01C248263FC5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -35,6 +47,24 @@
         {
         "MsmKey" = "8:_7A469929C81E4CC2BE104D31A6337119"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C39483F930BA4EFF8C89166F5380F7D3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C5A7F8C7A9174E269CBB55C021D8D5AD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1B75904F071E4C89AAC849FCB648F348"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -144,6 +174,14 @@
         {
             "LaunchCondition"
             {
+                "{A06ECF26-33A3-4562-8140-9B0E340D4F24}:_844A9300E4584E41BDFC3CC60CE6A9AB"
+                {
+                "Name" = "8:.NET Framework"
+                "Message" = "8:[VSDNETMSG]"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.7.2"
+                "AllowLaterVersions" = "11:FALSE"
+                "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=863262"
+                }
                 "{A06ECF26-33A3-4562-8140-9B0E340D4F24}:_BE35E17EEE0C4C47863EAABEBCC07A00"
                 {
                 "Name" = "8:.NET Core"
@@ -158,6 +196,57 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_19A852A2A4424354B559BEDE8F538444"
+            {
+            "SourcePath" = "8:..\\HeliosProfilePatcher\\bin\\Release\\net8.0-windows\\HeliosProfilePatcher.runtimeconfig.json"
+            "TargetName" = "8:HeliosProfilePatcher.runtimeconfig.json"
+            "Tag" = "8:"
+            "Folder" = "8:_5BA35C73803642169450F33C94D85346"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1B75904F071E4C89AAC849FCB648F348"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:HeliosProfilePatcher, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_1B75904F071E4C89AAC849FCB648F348"
+                    {
+                    "Name" = "8:HeliosProfilePatcher.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\HeliosProfilePatcher\\bin\\Release\\net8.0-windows\\HeliosProfilePatcher.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_5BA35C73803642169450F33C94D85346"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_40C11C6AC2E44B23BDBE01C248263FC5"
             {
             "SourcePath" = "8:..\\HeliosProfilePatcher\\Patcher Banner.jpg"
@@ -222,6 +311,46 @@
             {
             "SourcePath" = "8:..\\HeliosProfilePatcher\\Patcher Banner.png"
             "TargetName" = "8:Patcher Banner.png"
+            "Tag" = "8:"
+            "Folder" = "8:_5BA35C73803642169450F33C94D85346"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C39483F930BA4EFF8C89166F5380F7D3"
+            {
+            "SourcePath" = "8:..\\HeliosProfilePatcher\\bin\\Release\\net8.0-windows\\HeliosProfilePatcher.deps.json"
+            "TargetName" = "8:HeliosProfilePatcher.deps.json"
+            "Tag" = "8:"
+            "Folder" = "8:_5BA35C73803642169450F33C94D85346"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C5A7F8C7A9174E269CBB55C021D8D5AD"
+            {
+            "SourcePath" = "8:..\\HeliosProfilePatcher\\bin\\Release\\net8.0-windows\\HeliosProfilePatcher.exe"
+            "TargetName" = "8:HeliosProfilePatcher.exe"
             "Tag" = "8:"
             "Folder" = "8:_5BA35C73803642169450F33C94D85346"
             "Condition" = "8:"
@@ -328,7 +457,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Helios Profile Patcher"
         "ProductCode" = "8:{E6786C35-FB76-49CF-B5A1-53070214D7AE}"
-        "PackageCode" = "8:{CE333072-0364-4672-B692-32375834E5B1}"
+        "PackageCode" = "8:{626892C6-13F5-4A65-B1CD-27B02B3A3A4F}"
         "UpgradeCode" = "8:{4007497B-444E-4DEE-8A8F-0B6D499EFF61}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -448,7 +577,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_9C58C02B3FF9430F811A0223830AE898"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2827F716991848E89B5E428A86982FE7"
             {
             "Name" = "8:Helios Profile Patcher"
             "Arguments" = "8:"
@@ -456,7 +585,21 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:"
+            "Target" = "8:_C5A7F8C7A9174E269CBB55C021D8D5AD"
+            "Folder" = "8:_A9BBB25F8358473A8E64D9E452182EE5"
+            "WorkingFolder" = "8:_5BA35C73803642169450F33C94D85346"
+            "Icon" = "8:_7698FC9822D142AF962585FA9EFEBC47"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_3EDA9EAA22354F41894E1832CDEBC380"
+            {
+            "Name" = "8:Helios Profile Patcher"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_C5A7F8C7A9174E269CBB55C021D8D5AD"
             "Folder" = "8:_476002DB605B43D5BBF24B05373153C3"
             "WorkingFolder" = "8:_5BA35C73803642169450F33C94D85346"
             "Icon" = "8:_7698FC9822D142AF962585FA9EFEBC47"
@@ -866,34 +1009,6 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E7C2067EBAE6479FB79012255CCD5BCC"
-            {
-            "SourcePath" = "8:"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_5BA35C73803642169450F33C94D85346"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:Release|x64"
-            "OutputGroupCanonicalName" = "8:PublishItems"
-            "OutputProjectGuid" = "8:{19E32630-23B3-4F5F-AA5D-5496168EE545}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
         }
     }
 }

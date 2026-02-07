@@ -9,6 +9,8 @@
     <ApplicationIcon>HeliosProfilePatcher1.ico</ApplicationIcon>
     <Platforms>AnyCPU;x64</Platforms>
     <Configurations>Debug;Release;JustInstaller</Configurations>
+    <PackageIcon>Patcher1.png</PackageIcon>
+    <PackageOutputPath>$(Platform)</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +19,6 @@
     <None Remove="Patcher Banner.jpg" />
     <None Remove="Patcher Banner.png" />
     <None Remove="Patcher.png" />
-    <None Remove="Patcher1.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +49,13 @@
     <Compile Update="PatchPlanner.cs">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Patcher1.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
