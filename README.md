@@ -1,5 +1,7 @@
 # Helios Profile Patcher <div align="Right"><img width="200" height="180" alt="Patcher1" src="https://github.com/user-attachments/assets/a9af6209-30b0-48b5-85aa-f0465254560d" /></div>
 
+[![Build Release & Create MSI Files](https://github.com/BlueFinBima/Helios-Profile-Patcher/actions/workflows/Build.yml/badge.svg)](https://github.com/BlueFinBima/Helios-Profile-Patcher/actions/workflows/Build.yml)
+
 ## Abstract
 Program to provide a mechanism to quicky add interfaces and bindings to an existing Helios Profile.
 
