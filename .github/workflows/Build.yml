@@ -1,4 +1,4 @@
-name: 2. Build Release Candidate & Create MSI Files
+name: Build Release & Create MSI Files
 # This workflow is intended to produce a new Helios build on a push on 
 # a release candidate branch.  On successful build and packaging, the files
 # are zipped and cached for use by the publishing workflow.
@@ -19,7 +19,6 @@ on:
 jobs:  
   build:    
     runs-on: windows-latest
-    if: ${{ contains(github.ref,'rc16') }}
    
     steps:      
       - name: Checkout repository and submodules
