@@ -41,21 +41,14 @@ jobs:
         run: .\DisableOutOfProcBuild.exe
         working-directory: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\VSI\DisableOutOfProcBuild
 
-      - uses: nuget/setup-nuget@v1
-        with:
-          nuget-api-key: ${{ secrets.NuGetAPIKey }}
-          nuget-version: '5.x'
-          
-      - name: NuGet Restore
-        #if: steps.cache.outputs.cache-hit != 'true'
-        run: |
-          nuget restore HeliosProfilePatcher.sln
-        
-      - name: Clean and Build x86 and x64 Solutions
+      - name: Build x64 Solutions
         continue-on-error: true
         shell: cmd
         run: |
+          echo building HeliosProfilePatcher Release|x64
           msbuild HeliosProfilePatcher.sln /p:Configuration=Release /p:Platform="x64"
+          echo building 64-bit installers
+          devenv Helios.sln /Build "JustInstaller|x64"
 
       - name: zip up the msi
         continue-on-error: true
