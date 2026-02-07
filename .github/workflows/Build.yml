@@ -41,6 +41,15 @@ jobs:
         run: .\DisableOutOfProcBuild.exe
         working-directory: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\VSI\DisableOutOfProcBuild
 
+      - uses: nuget/setup-nuget@v1
+        with:
+          nuget-api-key: ${{ secrets.NuGetAPIKey }}
+          nuget-version: '5.x'
+          
+      - name: NuGet Restore
+        run: |
+          nuget restore "HeliosProfilePatcher/HeliosProfilePatcher.csproj"
+
       - name: Build x64 Solutions
         continue-on-error: true
         shell: cmd
