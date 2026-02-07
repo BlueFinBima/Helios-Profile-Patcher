@@ -49,13 +49,13 @@ jobs:
       - name: NuGet Restore
         #if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          nuget restore HeliosProfilePatcher/HeliosProfilePatcher.sln
+          nuget restore HeliosProfilePatcher.sln
         
       - name: Clean and Build x86 and x64 Solutions
         continue-on-error: true
         shell: cmd
         run: |
-          msbuild HeliosProfilePatcher/HeliosProfilePatcher.sln /p:Configuration=Release /p:Platform="x64"
+          msbuild HeliosProfilePatcher.sln /p:Configuration=Release /p:Platform="x64"
 
       - name: zip up the msi
         continue-on-error: true
