@@ -10,7 +10,7 @@
     <Platforms>AnyCPU;x64</Platforms>
     <Configurations>Debug;Release;JustInstaller</Configurations>
     <PackageIcon>Patcher1.png</PackageIcon>
-    <PackageOutputPath>$(Platform)</PackageOutputPath>
+    <PackageOutputPath>$(OutputPath)</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
