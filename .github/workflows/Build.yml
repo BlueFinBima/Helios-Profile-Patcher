@@ -62,6 +62,7 @@ jobs:
       - name: zip up the msi
         continue-on-error: true
         run: |
+          mkdir ./Assets
           tar -a -c -f "./Assets/Helios_Profile_Patcher_Installers.zip" -C "Installer\Release" *.msi
           
       - name: Upload Installers
