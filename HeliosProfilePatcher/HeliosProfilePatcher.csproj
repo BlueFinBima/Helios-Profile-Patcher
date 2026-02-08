@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>HeliosProfilePatcher1.ico</ApplicationIcon>
-    <Platforms>AnyCPU;x64</Platforms>
+    <Platforms>x64</Platforms>
     <Configurations>Debug;Release;JustInstaller</Configurations>
     <PackageIcon>Patcher1.png</PackageIcon>
     <PackageOutputPath>$(OutputPath)</PackageOutputPath>

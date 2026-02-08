@@ -21,6 +21,7 @@ mono_crash.*
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
+[Jj]ust[Ii]nstaller/
 x64/
 x86/
 [Ww][Ii][Nn]32/
@@ -32,6 +33,7 @@ bld/
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
+*.msi
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -362,3 +364,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /Installer/JustInstaller/setup.exe
+/Installer/JustInstaller/HeliosProfilePatcherInstaller.msi
+/Installer/JustInstaller/Installer.msi
