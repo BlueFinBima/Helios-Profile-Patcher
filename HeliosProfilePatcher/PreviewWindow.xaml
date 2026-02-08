@@ -28,7 +28,23 @@ WindowStartupLocation="CenterOwner">
                 </ScrollViewer>
             </TabItem>
 
-
+            <TabItem Header="Controls">
+                <ScrollViewer>
+                    <ItemsControl ItemsSource="{Binding Controls}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsSelected}">
+                                    <TextBox Text="{Binding Xml}"
+                                    AcceptsReturn="True"
+                                    TextWrapping="Wrap"
+                                    MinHeight="60" />
+                                </CheckBox>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </TabItem>
+            
             <TabItem Header="Bindings">
                 <ScrollViewer>
                     <ItemsControl ItemsSource="{Binding Bindings}">

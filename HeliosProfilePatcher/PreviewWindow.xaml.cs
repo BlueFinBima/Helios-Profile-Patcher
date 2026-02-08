@@ -13,17 +13,21 @@ namespace HeliosProfilePatcher
     {
         public ObservableCollection<InterfaceItem> Interfaces { get; }
         public ObservableCollection<BindingItem> Bindings { get; }
+        public ObservableCollection<ControlItem> Controls { get; }
+
         private string[] _vars = new string[5] { "", "", "", "", ""};
 
 
         public PreviewWindow(
         IEnumerable<InterfaceItem> interfaces,
         IEnumerable<BindingItem> bindings,
+        IEnumerable<ControlItem> controls,
         string[] vars)
         {
             InitializeComponent();
             _vars = vars;
             Interfaces = new ObservableCollection<InterfaceItem>(interfaces);
+            Controls = new ObservableCollection<ControlItem>(controls);
             Bindings = new ObservableCollection<BindingItem>(
             bindings.Select(SubstituteVariables));
             DataContext = this;
@@ -50,12 +54,6 @@ namespace HeliosProfilePatcher
         {
             DialogResult = false;
         }
-    }
-    public class InterfaceItem
-    {
-        public string Name { get; init; } = string.Empty;
-        public XElement Element { get; init; } = null!;
-        public bool IsSelected { get; set; } = true;
     }
 
 }

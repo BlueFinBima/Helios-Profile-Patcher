@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 using System.Xml.Linq;
 
 namespace HeliosProfilePatcher
@@ -9,12 +11,14 @@ namespace HeliosProfilePatcher
     {
         public List<InterfaceItem> Interfaces { get; } = new();
         public List<BindingItem> Bindings { get; } = new();
+        public List<ControlItem> Controls { get; } = new();
 
 
         public PatchPlanner(XDocument target, XDocument source)
         {
             CollectInterfaces(target, source);
             CollectBindings(target, source);
+            CollectControls(target, source);
         }
 
 
@@ -61,6 +65,47 @@ namespace HeliosProfilePatcher
                 if (existing.Contains(xml)) continue;
 
                 Bindings.Add(new BindingItem { Xml = xml });
+                existing.Add(xml);
+            }
+        }
+        private void CollectControls(XDocument target, XDocument source)
+        {
+            XElement? targetMonitors = target.Root?.Element("Monitors");
+            XElement? sourceMonitors = source.Root?.Element("Monitors");
+
+            if (targetMonitors == null || sourceMonitors == null) return;
+
+            HashSet<string> existing = new HashSet<string>(targetMonitors
+                .Elements("Monitor")
+                .SelectMany(m =>
+                    m.Element("Children")?
+                     .Elements("Control") ?? Enumerable.Empty<XElement>())
+                .Where(c =>
+                {
+                    var children = c.Element("Children");
+                    return children != null && !children.Elements().Any();
+                }).Select(c => c.ToString(SaveOptions.DisableFormatting)));
+
+
+            List<XElement> sourceControlsList = sourceMonitors
+                .Elements("Monitor")
+                .SelectMany(m =>
+                    m.Element("Children")?
+                     .Elements("Control") ?? Enumerable.Empty<XElement>())
+                .Where(c =>
+                {
+                    var children = c.Element("Children");
+                    return children != null && !children.Elements().Any();
+                })
+                .ToList();
+
+
+            foreach (XElement control in sourceControlsList)
+            {
+                string xml = control.ToString(SaveOptions.DisableFormatting);
+                if (existing.Contains(xml)) continue;
+
+                Controls.Add(new ControlItem { Xml = xml, Element = control, Name = control.Attribute("Name")?.Value ?? string.Empty });
                 existing.Add(xml);
             }
         }
