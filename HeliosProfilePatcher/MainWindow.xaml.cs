@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Xml.Linq;
 
 
@@ -14,6 +15,48 @@ namespace HeliosProfilePatcher
         private XDocument? _document;
         private string? _filePath;
         private string[] _vars = new string[5] { "Helios", "", "", "", "" };
+        private char[] _originalChars = new char[] { '\\' };
+        private char[] _replacementChars = new char[] { '#' };
+        private readonly string _charMessage = "Number of characters not equal";   
+
+        public bool PatchEnabled
+        {
+            get => _originalChars.Length == _replacementChars.Length;
+            set
+            {
+                OnPropertyChanged(nameof(PatchEnabled));
+            }
+        }
+        public string CharMessage
+        {
+            get => _originalChars.Length == _replacementChars.Length ? "" : _charMessage;
+            set
+            {
+                OnPropertyChanged(nameof(CharMessage));
+            }
+        }
+        public string OriginalCharactersValue
+        {
+            get => new string(_originalChars);
+            set
+            {
+                _originalChars = value.ToCharArray();
+                CharMessage = _originalChars.Length == _replacementChars.Length ? "" : _charMessage;
+                PatchEnabled = _originalChars.Length == _replacementChars.Length;
+                OnPropertyChanged(nameof(OriginalCharactersValue));
+            }
+        }
+        public string ReplacementCharactersValue
+        {
+            get => new string(_replacementChars);
+            set
+            {
+                _replacementChars = value.ToCharArray();
+                CharMessage = _originalChars.Length == _replacementChars.Length ? "" : _charMessage;
+                PatchEnabled = _originalChars.Length == _replacementChars.Length;
+                OnPropertyChanged(nameof(ReplacementCharactersValue));
+            }
+        }
         public string HeliosPathValue
         {
             get => _vars[0];
@@ -74,7 +117,7 @@ namespace HeliosProfilePatcher
 
         private void OpenXml_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new OpenFileDialog
+            OpenFileDialog dialog = new OpenFileDialog
             {
                 Filter = "Helios Profiles (*.hpf)|*.hpf"
             };
@@ -116,7 +159,7 @@ namespace HeliosProfilePatcher
             }
 
 
-            var dialog = new OpenFileDialog
+            OpenFileDialog dialog = new OpenFileDialog
             {
                 Filter = "Helios Profiles (*.hpf)|*.hpf"
             };
@@ -126,12 +169,10 @@ namespace HeliosProfilePatcher
                 return;
 
 
-            var patchDoc = XDocument.Load(dialog.FileName);
+            XDocument patchDoc = XDocument.Load(dialog.FileName);
 
-
-            var targetRoot = _document.Root;
-            var sourceRoot = patchDoc.Root;
-
+            XElement? targetRoot = _document.Root;
+            XElement? sourceRoot = patchDoc.Root;
 
             if (targetRoot?.Name != "HeliosProfile" || sourceRoot?.Name != "HeliosProfile")
             {
@@ -139,18 +180,11 @@ namespace HeliosProfilePatcher
                 return;
             }
 
+            List<XElement> interfacesToAdd = new List<XElement>();
+            List<XElement> bindingsToAdd = new List<XElement>();
 
-            var interfacesToAdd = new List<XElement>();
-            var bindingsToAdd = new List<XElement>();
-
-
-            CollectInterfaces();
-            CollectBindings();
-            var interfaceItems = new List<InterfaceItem>();
-            var bindingItems = new List<BindingItem>();
-
-            var planner = new PatchPlanner(_document, patchDoc);
-            var preview = new PreviewWindow(planner.Interfaces, planner.Bindings, _vars)
+            PatchPlanner planner = new PatchPlanner(_document, patchDoc);
+            PreviewWindow preview = new PreviewWindow(planner.Interfaces, planner.Bindings, _vars)
             {
                 Owner = this
             };
@@ -159,7 +193,7 @@ namespace HeliosProfilePatcher
             if (preview.ShowDialog() != true)
                 return;
 
-            var report = new StringBuilder();
+            StringBuilder report = new StringBuilder();
             report.AppendLine("Helios Profile Patch Report");
             report.AppendLine(DateTime.Now.ToString());
             report.AppendLine();
@@ -171,28 +205,45 @@ namespace HeliosProfilePatcher
                 report.AppendLine($"variable {variableNames[i]} = {_vars[i]}");
             }
 
-            var targetInterfaces = _document.Root!.Element("Interfaces");
-            var targetBindings = _document.Root!.Element("Bindings");
+            XElement? targetInterfaces = _document.Root!.Element("Interfaces");
+            XElement? targetBindings = _document.Root!.Element("Bindings");
 
 
-            foreach (var i in preview.Interfaces.Where(i => i.IsSelected))
+            foreach (InterfaceItem i in preview.Interfaces.Where(i => i.IsSelected))
             {
                 targetInterfaces!.Add(new XElement(i.Element));
                 report.AppendLine($"Added interface: {i.Name}");
             }
 
 
-            foreach (var b in preview.Bindings.Where(b => b.IsSelected))
+            foreach (BindingItem b in preview.Bindings.Where(b => b.IsSelected))
             {
                 targetBindings!.Add(b.ToElement());
                 report.AppendLine($"Added binding: {b.Xml}");
             }
 
+            if (targetBindings != null)
+            {
+                targetBindings
+                    .Descendants("Binding")
+                    .Where(b =>
+                        b.Elements("Action")
+                         .Any(a => (string?)a.Attribute("Name") == "send keys"))
+                    .SelectMany(b => b.Elements("StaticValue"))
+                    .Where(sv => sv.Value.Contains("\\"))
+                    .ToList()
+                    .ForEach(sv => {
+                        var text = sv.Value;
+                        for (int i = 0; i < _originalChars.Length; i++)
+                            text = text.Replace(_originalChars[i], _replacementChars[i]);
+
+                        sv.Value = text;
+                    });
+            }
 
             File.WriteAllText(Path.ChangeExtension(_filePath!, ".patched.log"), report.ToString());
 
-
-            var result = MessageBox.Show(report.ToString(),
+            MessageBoxResult result = MessageBox.Show(report.ToString(),
             "Patch Preview",
             MessageBoxButton.OKCancel,
             MessageBoxImage.Information);
@@ -202,68 +253,6 @@ namespace HeliosProfilePatcher
                 return;
 
             MessageBox.Show("Patch complete");
-
-
-            void CollectInterfaces()
-            {
-                var targetInterfaces = targetRoot.Element("Interfaces");
-                var sourceInterfaces = sourceRoot.Element("Interfaces");
-
-
-                if (targetInterfaces == null || sourceInterfaces == null)
-                    return;
-
-
-                var existingNames = new HashSet<string>(
-                targetInterfaces.Elements("Interface")
-                .Select(i => (string?)i.Attribute("Name"))
-                .Where(n => !string.IsNullOrEmpty(n))!);
-
-
-                foreach (var iface in sourceInterfaces.Elements("Interface"))
-                {
-                    var name = (string?)iface.Attribute("Name");
-                    if (string.IsNullOrEmpty(name))
-                        continue;
-
-
-                    if (existingNames.Contains(name))
-                        continue;
-
-
-                    interfacesToAdd.Add(iface);
-                    existingNames.Add(name);
-                }
-            }
-
-
-            void CollectBindings()
-            {
-                var targetBindings = targetRoot.Element("Bindings");
-                var sourceBindings = sourceRoot.Element("Bindings");
-
-
-                if (targetBindings == null || sourceBindings == null)
-                    return;
-
-
-                var existing = new HashSet<string>(
-                targetBindings.Elements("Binding")
-                .Select(b => b.ToString(SaveOptions.DisableFormatting)));
-
-
-                foreach (var binding in sourceBindings.Elements("Binding"))
-                {
-                    var key = binding.ToString(SaveOptions.DisableFormatting);
-                    if (existing.Contains(key))
-                        continue;
-
-
-                    bindingsToAdd.Add(binding);
-                    existing.Add(key);
-                }
-            }
         }
-
     }
 }

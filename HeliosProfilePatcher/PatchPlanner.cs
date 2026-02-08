@@ -20,20 +20,20 @@ namespace HeliosProfilePatcher
 
         private void CollectInterfaces(XDocument target, XDocument source)
         {
-            var targetInterfaces = target.Root?.Element("Interfaces");
-            var sourceInterfaces = source.Root?.Element("Interfaces");
+            XElement? targetInterfaces = target.Root?.Element("Interfaces");
+            XElement? sourceInterfaces = source.Root?.Element("Interfaces");
             if (targetInterfaces == null || sourceInterfaces == null) return;
 
 
-            var existing = new HashSet<string>(
+            HashSet<string> existing = new HashSet<string>(
             targetInterfaces.Elements("Interface")
             .Select(i => (string?)i.Attribute("Name"))
             .Where(n => !string.IsNullOrEmpty(n))!);
 
 
-            foreach (var iface in sourceInterfaces.Elements("Interface"))
+            foreach (XElement? iface in sourceInterfaces.Elements("Interface"))
             {
-                var name = (string?)iface.Attribute("Name");
+                string? name = (string?)iface.Attribute("Name");
                 if (string.IsNullOrEmpty(name) || existing.Contains(name)) continue;
 
 
@@ -45,21 +45,20 @@ namespace HeliosProfilePatcher
 
         private void CollectBindings(XDocument target, XDocument source)
         {
-            var targetBindings = target.Root?.Element("Bindings");
-            var sourceBindings = source.Root?.Element("Bindings");
+            XElement? targetBindings = target.Root?.Element("Bindings");
+            XElement? sourceBindings = source.Root?.Element("Bindings");
             if (targetBindings == null || sourceBindings == null) return;
 
 
-            var existing = new HashSet<string>(
+            HashSet<string> existing = new HashSet<string>(
             targetBindings.Elements("Binding")
             .Select(b => b.ToString(SaveOptions.DisableFormatting)));
 
 
-            foreach (var binding in sourceBindings.Elements("Binding"))
+            foreach (XElement? binding in sourceBindings.Elements("Binding"))
             {
-                var xml = binding.ToString(SaveOptions.DisableFormatting);
+                string xml = binding.ToString(SaveOptions.DisableFormatting);
                 if (existing.Contains(xml)) continue;
-
 
                 Bindings.Add(new BindingItem { Xml = xml });
                 existing.Add(xml);
