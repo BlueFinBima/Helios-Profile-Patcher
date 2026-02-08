@@ -21,7 +21,9 @@ There is also the ability to perform character substitutions on `send keys` bind
 > The number of characters in the `Original Characters` field must be the same as in the `Replacement Characters` field.
 
 Next you press the Patch button which allows you to load in the sparse profile used to patch the target profile.  The window that appears 
-then allows you to select / deselect the interfaces and bindings from the sparse profile that you want to add to the target profile.
+then allows you to select / deselect the interfaces, bindings & controls from the sparse profile that you want to add to the target profile.
+
+Support for controls is limited to controls that live directly on the monitor surface.  Controls which are on panels are not moved over to the target profile.
 
 <img width="273" height="458" alt="image" src="https://github.com/user-attachments/assets/ee2b942e-4b86-4108-b18b-61de7cf15b03" />
 
